@@ -8,6 +8,15 @@ RSpec.describe "CreatesTasks", type: :request do
     let(:authorization) { ActionController::HttpAuthentication::Token.encode_credentials(user.auth_token) }
 
 
+    describe 'When not logged in' do
+
+      it 'is not allowed to create task' do
+        post api_v1_tasks_path, { format: :json, task: task_params }
+        expect(response).to have_http_status(401)
+      end
+    end
+
+
     describe 'When logged in' do
 
       it "creates a new task" do
