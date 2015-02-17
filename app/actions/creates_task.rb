@@ -1,6 +1,6 @@
 class CreatesTask < Struct.new(:services)
 
-  def create current_user: nil, params: {}
-    services['Tasks'].create params
+  def create current_user:, params: {}
+    current_user.tasks.create! params
   end
 end

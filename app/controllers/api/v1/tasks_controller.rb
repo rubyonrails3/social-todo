@@ -1,7 +1,7 @@
 class Api::V1::TasksController < ApplicationController
 
   def create
-    @task = services['CreatesTask'].create current_user: Object.new, params: task_params
+    @task = services['CreatesTask'].create current_user: current_user, params: task_params
     respond_to do |format|
       format.json { render template: 'api/v1/tasks/create', status: :created }
     end

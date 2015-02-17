@@ -11,7 +11,8 @@ RSpec.describe CreatesTask do
   let(:task_params) { { description: 'this is desc' } }
 
   it 'creates a new task' do
-    expect(tasks).to receive(:create).with(task_params) { task }
+    expect(user).to receive(:tasks) { tasks }
+    expect(tasks).to receive(:create!).with(task_params) { task }
     subject.create current_user: user, params: task_params
   end
 end
