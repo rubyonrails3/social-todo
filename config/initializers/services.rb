@@ -7,6 +7,7 @@ services['Users'] = User
 services['CreatesUser'] = CreatesUser.new(services)
 
 services['LoginUser'] = LoginUser.new(services)
+services['LogoutUser'] = LogoutUser.new(services)
 
 
 Rails.application.config.services = services

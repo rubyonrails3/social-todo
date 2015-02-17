@@ -9,6 +9,10 @@ class ApplicationController < ActionController::Base
     token_authenticate or basic_authenticate or render_unauthorized
   end
 
+  def current_user
+    @current_user
+  end
+
   protected
 
   def token_authenticate

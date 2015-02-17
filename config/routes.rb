@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       resource :user, controller: :user
       post :sign_up, to: 'user#create'
       post :login, to: 'user#login'
+      delete :logout, to: 'user#logout'
       resources :tasks, except: [:new, :edit]
     end
   end

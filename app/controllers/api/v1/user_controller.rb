@@ -15,6 +15,13 @@ class Api::V1::UserController < ApplicationController
       format.json { render template:  'api/v1/user/create', status: :ok }
     end
   end
+
+  def logout
+    services['LogoutUser'].logout current_user: current_user
+    respond_to do |format|
+      format.json { render json: "", status: :no_content }
+    end
+  end
   
   private
 
