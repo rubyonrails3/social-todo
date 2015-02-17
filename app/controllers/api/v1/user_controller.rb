@@ -1,9 +1,18 @@
 class Api::V1::UserController < ApplicationController
 
+  before_action :authenticate, except: [:create, :login]
+
   def create
     @user = services['CreatesUser'].create params: user_params
     respond_to do |format|
       format.json { render template: 'api/v1/user/create', status: :created }
+    end
+  end
+
+  def login
+    @user = services['LoginUser'].login params: params.slice(:email, :password)
+    respond_to do |format|
+      format.json { render template:  'api/v1/user/create', status: :ok }
     end
   end
   

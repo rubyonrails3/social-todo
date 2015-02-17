@@ -2,8 +2,9 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resource :user
+      resource :user, controller: :user
       post :sign_up, to: 'user#create'
+      post :login, to: 'user#login'
       resources :tasks, except: [:new, :edit]
     end
   end
