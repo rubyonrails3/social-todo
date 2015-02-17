@@ -9,6 +9,13 @@ class Api::V1::UserController < ApplicationController
     end
   end
 
+  def update
+    services['UpdatesUser'].update current_user: current_user, params: user_params
+    respond_to do |format|
+      format.json { render json: '', status: :no_content }
+    end
+  end
+
   def login
     @user = services['LoginUser'].login params: params.slice(:email, :password)
     respond_to do |format|
